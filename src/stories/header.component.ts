@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ButtonComponent } from './button.component';
 import type { User } from './user';
+import { ButtonComponent } from '../app/components/atoms/buttons/button.component';
 
 @Component({
   selector: 'storybook-header',
@@ -53,7 +53,6 @@ import type { User } from './user';
           <storybook-button
             *ngIf="!user"
             size="small"
-            [primary]="true"
             class="margin-left"
             (onClick)="onCreateAccount.emit($event)"
             label="Sign up"
