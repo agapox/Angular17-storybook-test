@@ -1,0 +1,39 @@
+<div [ngSwitch]="errors.length && errors[0].key">
+  <span *ngSwitchCase="'required'" class="text-xs">
+    {{ "Required information" }}.
+  </span>
+  <span *ngSwitchCase="'mask'" class="text-xs">
+    {{ "Please enter valid information" }}.
+  </span>
+  <span *ngSwitchCase="'pattern'" class="text-xs">
+    {{ "Please enter valid information" }}.
+  </span>
+  <span *ngSwitchCase="'minlength'" class="text-xs">
+    {{ question.controlAttribute?.minLength }}
+    {{ "characters minimum"}}
+  </span>
+  <span *ngSwitchCase="'maxlength'" class="text-xs">
+    {{ question.controlAttribute?.maxLength }}
+    {{ "characters maximum" }}
+  </span>
+  <span *ngSwitchCase="'lt'" class="text-xs">
+    {{ question.question }}
+    {{ "must be less than" }}
+  </span>
+  <span *ngSwitchCase="'gt'" class="text-xs">
+    {{ question.question }}
+    {{ "must be greater than" }}
+  </span>
+  <span *ngSwitchCase="'lte'" class="text-xs">
+    {{ question.question }}
+    {{ "must be less or equal than" }}
+  </span>
+  <span *ngSwitchCase="'gte'" class="text-xs">
+    {{ question.question }}
+    {{ "must be greater or equal than" }}
+  </span>
+  <span *ngSwitchCase="'eq'" class="text-xs">
+    {{ question.question }}
+    {{ "must be greater or equal than" }}
+  </span>
+</div>

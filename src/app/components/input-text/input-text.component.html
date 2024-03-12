@@ -1,0 +1,42 @@
+<ng-container [formGroup]="formGroup">
+    <mat-form-field
+      class="w-full"
+      appearance="outline"
+      [floatLabel]="question.controlAttribute?.prefix ? 'always' : 'auto'"
+      [ngClass]="question.clases"
+      [class.prefix-input]="question.controlAttribute?.prefix"
+    >
+      <mat-label>{{ question.question }}</mat-label>
+      <div matPrefix *ngIf="question.controlAttribute?.prefix">
+        <span class="ml-4">
+          {{ question.controlAttribute?.prefix }}
+        </span>
+      </div>
+      <input
+        matInput
+        class="w-full"
+        [formControlName]="question.identifier"
+        [mask]="quesValidation!.mask"
+        [validation]="question.controlAttribute?.inputMode !== 'tel'"
+        [thousandSeparator]="question.controlAttribute?.maskSeparator || ''"
+        [placeholder]="question.controlAttribute?.placeHolder || ''"
+        [readonly]="!question.editCurrentData"
+        [attr.inputmode]="question.controlAttribute?.keyBoardType || 'text'"
+        [minlength]="quesValidation | getInputLength: 'minLength'"
+        [maxlength]="quesValidation | getInputLength: 'maxLength'"
+        (paste)="onPaste()"
+        (drop)="onPaste()"
+        (keydown)="inputChange($event)"
+        (keyup)="formatInput($event)"
+      />
+      <mat-error
+        *ngIf="control?.invalid && (control?.errors | keyvalue) as errors"
+      >
+        <emma-control-error
+          [errors]="errors"
+          [question]="question"
+        ></emma-control-error>
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
+  
